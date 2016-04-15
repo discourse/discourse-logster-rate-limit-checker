@@ -7,7 +7,7 @@ after_initialize do
   if (RailsMultisite::ConnectionManagement.current_db == RailsMultisite::ConnectionManagement::DEFAULT) &&
     module ::LogsterRateLimitChecker
       STORE = Logster.store
-      RATE_LIMITS = STORE.instance_variable_get(:@rate_limits)[RailsMultisite::ConnectionManagement::DEFAULT]
+      RATE_LIMITS = STORE.rate_limits[RailsMultisite::ConnectionManagement::DEFAULT]
 
       if (RATE_LIMITS && !RATE_LIMITS.empty?)
         def self.check_rate_limits(duration, limit)
