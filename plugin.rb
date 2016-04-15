@@ -4,7 +4,7 @@
 # authors: Alan Tan (tgxworld)
 
 after_initialize do
-  if (RailsMultisite::ConnectionManagement.current_db == RailsMultisite::ConnectionManagement::DEFAULT) &&
+  if (RailsMultisite::ConnectionManagement.current_db == RailsMultisite::ConnectionManagement::DEFAULT)
     module ::LogsterRateLimitChecker
       STORE = Logster.store
       RATE_LIMITS = STORE.rate_limits[RailsMultisite::ConnectionManagement::DEFAULT]
