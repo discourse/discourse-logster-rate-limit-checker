@@ -8,6 +8,11 @@ after_initialize do
     module ::LogsterRateLimitChecker
       STORE = Logster.store
       RATE_LIMITS = STORE.rate_limits[RailsMultisite::ConnectionManagement::DEFAULT]
+      RATE_LIMIT_KEY_PREFIX = "__META_RATE_LIMIT_KEY__"
+
+      RATE_LIMITS.each do |rate_limiter|
+        $redis.set("#{RATE_LIMIT_KEY_PREFIX}:#{rate_limiter.duration}", rate_limiter.key)
+      end
 
       if (RATE_LIMITS && !RATE_LIMITS.empty?)
         def self.check_rate_limits(duration, limit)
