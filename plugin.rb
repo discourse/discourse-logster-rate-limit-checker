@@ -8,7 +8,7 @@ after_initialize do
     module ::LogsterRateLimitChecker
       STORE = Logster.store
       RATE_LIMITS = STORE.rate_limits[RailsMultisite::ConnectionManagement::DEFAULT]
-      RATE_LIMIT_KEY_PREFIX = "__META_RATE_LIMIT_KEY__"
+      RATE_LIMIT_KEY_PREFIX = "__DEV_RATE_LIMIT_KEY__"
 
       if (RATE_LIMITS && !RATE_LIMITS.empty?)
         RATE_LIMITS.each do |rate_limiter|
