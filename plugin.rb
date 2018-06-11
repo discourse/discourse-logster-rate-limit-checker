@@ -2,6 +2,7 @@
 # about: Add scheduled jobs to check the logster's rate limit.
 # version: 0.0.1
 # authors: Alan Tan (tgxworld)
+# url: https://github.com/discourse/logster-rate-limit-checker
 
 after_initialize do
   if (RailsMultisite::ConnectionManagement.current_db == RailsMultisite::ConnectionManagement::DEFAULT)
