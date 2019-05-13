@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # name: discourse-logster-rate-limit-checker
 # about: Add scheduled jobs to check the logster's rate limit.
 # version: 0.0.1
