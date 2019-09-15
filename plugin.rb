@@ -26,7 +26,7 @@ after_initialize do
           end
         end
 
-        class PerMinuteChecker < Jobs::Scheduled
+        class PerMinuteChecker < ::Jobs::Scheduled
           every 10.seconds
 
           def execute(args)
@@ -36,7 +36,7 @@ after_initialize do
           end
         end
 
-        class PerHourChecker < Jobs::Scheduled
+        class PerHourChecker < ::Jobs::Scheduled
           every 10.minute
 
           def execute(args)
