@@ -15,7 +15,7 @@ after_initialize do
 
       if (RATE_LIMITS && !RATE_LIMITS.empty?)
         RATE_LIMITS.each do |rate_limiter|
-          $redis.set("#{RATE_LIMIT_KEY_PREFIX}:#{rate_limiter.duration}", rate_limiter.key)
+          Discourse.redis.set("#{RATE_LIMIT_KEY_PREFIX}:#{rate_limiter.duration}", rate_limiter.key)
         end
 
         def self.check_rate_limits(duration, limit)
