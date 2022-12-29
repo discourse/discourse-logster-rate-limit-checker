@@ -7,7 +7,10 @@
 # url: https://github.com/discourse/discourse-logster-rate-limit-checker
 
 after_initialize do
-  if (RailsMultisite::ConnectionManagement.current_db == RailsMultisite::ConnectionManagement::DEFAULT)
+  if (
+       RailsMultisite::ConnectionManagement.current_db ==
+         RailsMultisite::ConnectionManagement::DEFAULT
+     )
     module ::LogsterRateLimitChecker
       STORE = Logster.store
       RATE_LIMITS = STORE.rate_limits[RailsMultisite::ConnectionManagement::DEFAULT]
@@ -31,7 +34,8 @@ after_initialize do
 
           def execute(args)
             ::LogsterRateLimitChecker.check_rate_limits(
-              60, SiteSetting.alert_admins_if_errors_per_minute
+              60,
+              SiteSetting.alert_admins_if_errors_per_minute,
             )
           end
         end
@@ -41,7 +45,8 @@ after_initialize do
 
           def execute(args)
             ::LogsterRateLimitChecker.check_rate_limits(
-              3600, SiteSetting.alert_admins_if_errors_per_hour
+              3600,
+              SiteSetting.alert_admins_if_errors_per_hour,
             )
           end
         end
